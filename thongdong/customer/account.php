@@ -1,0 +1,141 @@
+<?php
+session_start();
+$pageTitle = "Tài khoản - Thong Dong";
+
+// chưa login thì về login
+if (empty($_SESSION['customer'])) {
+  header('Location: /thongdong/customer/login.php');
+  exit;
+}
+
+$customer = $_SESSION['customer'];
+$order = $_SESSION['order'] ?? null;
+
+include '../includes/customer-layout-top.php';
+?>
+
+<main class="container" style="padding:34px 0 70px;">
+
+  <section class="card account-head">
+    <div class="account-left">
+      <h1 style="margin:0 0 8px;">Tài khoản</h1>
+      <p class="muted" style="margin:0;">
+        Chào <b><?php echo htmlspecialchars($customer['name']); ?></b> ✨
+        <span class="muted"> (<?php echo htmlspecialchars($customer['email']); ?>)</span>
+      </p>
+    </div>
+
+    <div class="account-actions">
+      <a class="btn outline" href="/thongdong/customer/cart.php">Giỏ hàng</a>
+      <a class="btn" href="/thongdong/customer/logout.php">Đăng xuất</a>
+    </div>
+  </section>
+
+  <section class="account-grid">
+    <!-- Thông tin -->
+    <article class="card account-card">
+      <h2 class="account-title">Thông tin của bà</h2>
+      <div class="account-info">
+        <div class="info-row">
+          <div class="muted">Họ và tên</div>
+          <div><b><?php echo htmlspecialchars($customer['name']); ?></b></div>
+        </div>
+        <div class="info-row">
+          <div class="muted">Email</div>
+          <div><b><?php echo htmlspecialchars($customer['email']); ?></b></div>
+        </div>
+        <div class="info-row">
+          <div class="muted">Trạng thái</div>
+          <div><span class="badge paid">Đã đăng nhập</span></div>
+        </div>
+      </div>
+
+      <div class="muted" style="margin-top:10px;">
+        (Demo front-end) Chưa có chức năng sửa hồ sơ / đổi mật khẩu. Nếu bà muốn, tui làm tiếp.
+      </div>
+    </article>
+
+    <!-- Đơn gần nhất -->
+    <article class="card account-card">
+      <h2 class="account-title">Đơn hàng gần đây</h2>
+
+      <?php if (!$order): ?>
+        <div class="muted">Chưa có đơn nào. Bà ghé cửa hàng chọn nến nha.</div>
+        <div style="margin-top:12px;">
+          <a class="btn" href="/thongdong/customer/shop.php">Mua ngay</a>
+        </div>
+      <?php else: ?>
+        <div class="order-mini">
+          <div class="order-mini-top">
+            <div>
+              <div class="muted">Thời gian</div>
+              <div><b><?php echo htmlspecialchars($order['time'] ?? ''); ?></b></div>
+            </div>
+
+            <div style="text-align:right;">
+              <div class="muted">Thanh toán</div>
+              <div>
+                <b>
+                  <?php echo ($order['payment'] ?? 'cod') === 'bank' ? 'Chuyển khoản' : 'COD'; ?>
+                </b>
+              </div>
+            </div>
+          </div>
+
+          <div class="order-mini-body">
+            <div class="muted">Giao tới</div>
+            <div>
+              <b><?php echo htmlspecialchars($order['name'] ?? $customer['name']); ?></b>
+              • <?php echo htmlspecialchars($order['phone'] ?? ''); ?><br>
+              <?php echo nl2br(htmlspecialchars($order['address'] ?? '')); ?>
+            </div>
+
+            <?php if (!empty($order['note'])): ?>
+              <div style="margin-top:10px;">
+                <div class="muted">Ghi chú</div>
+                <div><?php echo nl2br(htmlspecialchars($order['note'])); ?></div>
+              </div>
+            <?php endif; ?>
+
+            <div style="margin-top:12px;">
+              <a class="btn outline" href="/thongdong/customer/order-confirmation.php">Xem chi tiết đơn</a>
+              <a class="btn" href="/thongdong/customer/shop.php">Mua thêm</a>
+            </div>
+          </div>
+        </div>
+      <?php endif; ?>
+    </article>
+
+    <!-- Quick links -->
+    <article class="card account-card account-links">
+      <h2 class="account-title">Nhanh tay</h2>
+      <a class="quick-link" href="/thongdong/customer/shop.php">
+        <span>🛍️</span>
+        <div>
+          <b>Vào cửa hàng</b>
+          <div class="muted">Chọn mùi hương hợp mood</div>
+        </div>
+      </a>
+
+      <a class="quick-link" href="/thongdong/customer/blog.php">
+        <span>📓</span>
+        <div>
+          <b>Đọc Nhật ký</b>
+          <div class="muted">Mẹo dùng nến & câu chuyện nhỏ</div>
+        </div>
+      </a>
+
+      <a class="quick-link" href="/thongdong/customer/about.php">
+        <span>🏮</span>
+        <div>
+          <b>Giới thiệu Thong Dong</b>
+          <div class="muted">Thuần Việt – vàng đỏ – gạch bông</div>
+        </div>
+      </a>
+    </article>
+
+  </section>
+
+</main>
+
+<?php include '../includes/customer-layout-bottom.php'; ?>

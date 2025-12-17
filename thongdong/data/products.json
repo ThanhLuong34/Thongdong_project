@@ -1,0 +1,42 @@
+[
+    {
+        "id": "p001",
+        "name": "Nến Quế Ấm",
+        "price": 189000,
+        "category": "Tet-DoVang",
+        "stock": 24,
+        "status": "active",
+        "image": "\/thongdong\/assets\/img\/products\/nen-que-am.jpg",
+        "desc": "Mùi quế ấm – hợp vibe Tết, phòng khách, góc đọc sách."
+    },
+    {
+        "id": "p002",
+        "name": "Nến Sen Nhẹ",
+        "price": 209000,
+        "category": "ThuanViet",
+        "stock": 18,
+        "status": "active",
+        "image": "\/thongdong\/assets\/img\/products\/nen-sen-nhe.jpg",
+        "desc": "Sen thanh – nhẹ, sạch, rất hợp thư giãn buổi tối."
+    },
+    {
+        "id": "p003",
+        "name": "Nến Trà Xanh",
+        "price": 199000,
+        "category": "ThuanViet",
+        "stock": 12,
+        "status": "active",
+        "image": "\/thongdong\/assets\/img\/products\/nen-tra-xanh.jpg",
+        "desc": "Trà xanh dịu – cảm giác mát, hợp làm việc và thiền."
+    },
+    {
+        "id": "p004",
+        "name": "Set quà “Thong Dong”",
+        "price": 459000,
+        "category": "QuaTang",
+        "stock": 8,
+        "status": "active",
+        "image": "\/thongdong\/assets\/img\/products\/set-qua-thongdong.jpg",
+        "desc": "Set quà tặng chỉnh chu – hợp sinh nhật, tân gia."
+    }
+]
