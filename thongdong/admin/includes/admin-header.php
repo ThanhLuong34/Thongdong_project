@@ -15,7 +15,10 @@ if (session_status() === PHP_SESSION_NONE) {
       <a href="/thongdong/admin/orders.php">Đơn hàng</a>
       <a href="/thongdong/admin/customers.php">Khách hàng</a>
       <a href="/thongdong/admin/blog.php">Nhật ký</a>
+      <a href="/thongdong/admin/returns.php">Đổi trả</a>
       <a href="/thongdong/admin/settings.php">Cài đặt</a>
+      <a href="/thongdong/admin/reviews.php">Review</a>
+
     </nav>
 
     <div class="admin-right">

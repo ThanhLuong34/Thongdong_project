@@ -22,6 +22,10 @@ if (session_status() === PHP_SESSION_NONE) {
       <a href="/thongdong/customer/blog.php">Nhật ký</a>
       <a href="/thongdong/customer/about.php">Giới thiệu</a>
       <a href="/thongdong/customer/cart.php">Giỏ hàng</a>
+      <a href="/thongdong/customer/returns.php">Chính sách đổi trả</a>
+      <a href="/thongdong/customer/reviews.php">Review</a>
+
+
 
       <?php if (!empty($_SESSION['customer'])): ?>
         <!-- ĐÃ ĐĂNG NHẬP -->

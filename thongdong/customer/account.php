@@ -55,56 +55,54 @@ include '../includes/customer-layout-top.php';
       </div>
     </article>
 
-    <!-- Đơn gần nhất -->
-    <article class="card account-card">
-      <h2 class="account-title">Đơn hàng gần đây</h2>
+<?php
+$orders = $_SESSION['order_history'] ?? [];
+$recent = array_slice($orders, 0, 3);
+?>
 
-      <?php if (!$order): ?>
-        <div class="muted">Chưa có đơn nào. Bà ghé cửa hàng chọn nến nha.</div>
-        <div style="margin-top:12px;">
-          <a class="btn" href="/thongdong/customer/shop.php">Mua ngay</a>
-        </div>
-      <?php else: ?>
-        <div class="order-mini">
-          <div class="order-mini-top">
+<div class="card" style="padding:18px;">
+  <h3 style="margin:0 0 10px;">Đơn hàng gần đây</h3>
+
+  <?php if (empty($orders)): ?>
+    <div class="muted">Chưa có đơn nào. Bà ghé cửa hàng chọn nến nha.</div>
+    <a class="btn" style="margin-top:12px;" href="/thongdong/customer/shop.php">Mua ngay</a>
+  <?php else: ?>
+    <div style="display:grid; gap:10px; margin-top:8px;">
+      <?php foreach ($recent as $o): ?>
+        <div class="card" style="padding:12px;">
+          <div style="display:flex; justify-content:space-between; gap:12px;">
             <div>
-              <div class="muted">Thời gian</div>
-              <div><b><?php echo htmlspecialchars($order['time'] ?? ''); ?></b></div>
+              <b>#<?php echo htmlspecialchars($o['id'] ?? 'TD'); ?></b>
+              <div class="muted" style="margin-top:4px;">
+                <?php echo htmlspecialchars($o['time'] ?? ''); ?> •
+                <?php echo strtoupper(htmlspecialchars($o['payment'] ?? 'cod')); ?>
+              </div>
             </div>
-
             <div style="text-align:right;">
-              <div class="muted">Thanh toán</div>
-              <div>
-                <b>
-                  <?php echo ($order['payment'] ?? 'cod') === 'bank' ? 'Chuyển khoản' : 'COD'; ?>
-                </b>
+              <b>
+                <?php
+                  $t = $o['total'] ?? 0;
+                  if (!$t && !empty($o['items'])) {
+                    foreach ($o['items'] as $it) $t += ((int)($it['price'] ?? 0)) * ((int)($it['qty'] ?? 1));
+                  }
+                  echo number_format((int)$t) . 'đ';
+                ?>
+              </b>
+              <div class="muted" style="margin-top:4px;">
+                <?php echo htmlspecialchars($o['status'] ?? 'Chờ xử lý'); ?>
               </div>
-            </div>
-          </div>
-
-          <div class="order-mini-body">
-            <div class="muted">Giao tới</div>
-            <div>
-              <b><?php echo htmlspecialchars($order['name'] ?? $customer['name']); ?></b>
-              • <?php echo htmlspecialchars($order['phone'] ?? ''); ?><br>
-              <?php echo nl2br(htmlspecialchars($order['address'] ?? '')); ?>
-            </div>
-
-            <?php if (!empty($order['note'])): ?>
-              <div style="margin-top:10px;">
-                <div class="muted">Ghi chú</div>
-                <div><?php echo nl2br(htmlspecialchars($order['note'])); ?></div>
-              </div>
-            <?php endif; ?>
-
-            <div style="margin-top:12px;">
-              <a class="btn outline" href="/thongdong/customer/order-confirmation.php">Xem chi tiết đơn</a>
-              <a class="btn" href="/thongdong/customer/shop.php">Mua thêm</a>
             </div>
           </div>
         </div>
-      <?php endif; ?>
-    </article>
+      <?php endforeach; ?>
+    </div>
+
+    <a class="btn outline" style="margin-top:12px;" href="/thongdong/customer/order-history.php">
+      Xem tất cả
+    </a>
+  <?php endif; ?>
+</div>
+
 
     <!-- Quick links -->
     <article class="card account-card account-links">

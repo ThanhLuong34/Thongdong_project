@@ -1,42 +1,31 @@
 <?php
 session_start();
+require __DIR__ . '/includes/products-data.php';
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-  header('Location: /thongdong/customer/shop.php');
-  exit;
-}
-
-$id  = (int)($_POST['id'] ?? 0);
-$qty = (int)($_POST['qty'] ?? 1);
+$id = (int)($_GET['id'] ?? 0);
+$qty = (int)($_GET['qty'] ?? 1);
 if ($qty < 1) $qty = 1;
 
-$products = [
-  1 => ['id'=>1,'name'=>'Nến Quế Ấm','price'=>189000],
-  2 => ['id'=>2,'name'=>'Nến Sen Nhẹ','price'=>209000],
-  3 => ['id'=>3,'name'=>'Nến Trà Xanh','price'=>199000],
-  4 => ['id'=>4,'name'=>'Set Quà “Thong Dong”','price'=>459000],
-  5 => ['id'=>5,'name'=>'Nến Bưởi Sáng','price'=>219000],
-  6 => ['id'=>6,'name'=>'Nến Gừng Nồng','price'=>189000],
-  7 => ['id'=>7,'name'=>'Set Quà “Tân Niên”','price'=>529000],
-  8 => ['id'=>8,'name'=>'Nến Gỗ Mộc','price'=>239000],
-];
-
-if (!isset($products[$id])) {
+$p = td_get_product($id);
+if (!$p) {
   header('Location: /thongdong/customer/shop.php');
   exit;
 }
-
-$p = $products[$id];
 
 if (!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
 
-// key theo id
-$key = (string)$id;
+$found = false;
+foreach ($_SESSION['cart'] as &$item) {
+  if ((int)$item['id'] === $id) {
+    $item['qty'] = (int)$item['qty'] + $qty;
+    $found = true;
+    break;
+  }
+}
+unset($item);
 
-if (isset($_SESSION['cart'][$key])) {
-  $_SESSION['cart'][$key]['qty'] += $qty;
-} else {
-  $_SESSION['cart'][$key] = [
+if (!$found) {
+  $_SESSION['cart'][] = [
     'id'    => $p['id'],
     'name'  => $p['name'],
     'price' => $p['price'],
@@ -44,6 +33,7 @@ if (isset($_SESSION['cart'][$key])) {
   ];
 }
 
-$back = $_SERVER['HTTP_REFERER'] ?? '/thongdong/customer/shop.php';
+// quay lại trang trước nếu có, không thì về giỏ
+$back = $_SERVER['HTTP_REFERER'] ?? '/thongdong/customer/cart.php';
 header('Location: ' . $back);
 exit;

@@ -124,3 +124,20 @@ include '../includes/customer-layout-top.php';
 </main>
 
 <?php include '../includes/customer-layout-bottom.php'; ?>
+<div class="product-actions">
+  <!-- giữ nút hiện có của bà -->
+
+  <a class="btn outline" href="/thongdong/customer/reviews.php?product=<?php echo (int)$product['id']; ?>">
+    Xem review
+  </a>
+
+  <?php if (!empty($_SESSION['customer'])): ?>
+    <a class="btn outline" href="/thongdong/customer/review-create.php?product=<?php echo (int)$product['id']; ?>">
+      Viết review
+    </a>
+  <?php else: ?>
+    <a class="btn outline" href="/thongdong/customer/login.php">
+      Đăng nhập để review
+    </a>
+  <?php endif; ?>
+</div>

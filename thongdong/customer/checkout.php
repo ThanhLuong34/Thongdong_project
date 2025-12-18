@@ -10,24 +10,121 @@ if (empty($_SESSION['cart'])) {
   exit;
 }
 
+/**
+ * Chuẩn hoá cart về dạng items:
+ * [
+ *   ['id'=>1,'name'=>'..','price'=>189000,'qty'=>2],
+ *   ...
+ * ]
+ */
+function td_normalize_cart($cart, $PRODUCTS) {
+  $items = [];
+
+  // Case A: cart dạng [productId => qty]
+  $isMap = true;
+  foreach ($cart as $k => $v) {
+    if (!is_numeric($k) || !is_numeric($v)) { $isMap = false; break; }
+  }
+
+  if ($isMap) {
+    foreach ($cart as $pid => $qty) {
+      $pid = (int)$pid;
+      $qty = (int)$qty;
+      if ($qty < 1) continue;
+
+      $p = findProductById($pid, $PRODUCTS);
+      if (!$p) continue;
+
+      $items[] = [
+        'id' => $pid,
+        'name' => $p['name'],
+        'price' => (int)$p['price'],
+        'qty' => $qty,
+      ];
+    }
+    return $items;
+  }
+
+  // Case B: cart dạng [ ['id'=>..,'qty'=>..,'price'=>..], ... ]
+  foreach ($cart as $row) {
+    if (!is_array($row)) continue;
+
+    $pid = (int)($row['id'] ?? 0);
+    $qty = (int)($row['qty'] ?? 1);
+    if ($qty < 1) $qty = 1;
+
+    $p = $pid ? findProductById($pid, $PRODUCTS) : null;
+
+    $name  = $row['name']  ?? ($p['name'] ?? 'Sản phẩm');
+    $price = $row['price'] ?? ($p['price'] ?? 0);
+    $price = (int)$price;
+
+    $items[] = [
+      'id' => $pid,
+      'name' => $name,
+      'price' => $price,
+      'qty' => $qty,
+    ];
+  }
+
+  return $items;
+}
+
+$cartItems = td_normalize_cart($_SESSION['cart'], $PRODUCTS);
+
+// nếu normalize xong mà rỗng -> về shop
+if (!$cartItems) {
+  $_SESSION['cart'] = [];
+  header('Location: /thongdong/customer/shop.php');
+  exit;
+}
+
+$errors = [];
+
 // xử lý submit checkout
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $_SESSION['order'] = [
-    'name'    => trim($_POST['name'] ?? ''),
-    'phone'   => trim($_POST['phone'] ?? ''),
-    'address' => trim($_POST['address'] ?? ''),
-    'note'    => trim($_POST['note'] ?? ''),
-    'items'   => $_SESSION['cart'],
-    'time'    => date('H:i d/m/Y'),
-    'payment' => $_POST['payment'] ?? 'cod',
+  $name    = trim($_POST['name'] ?? '');
+  $phone   = trim($_POST['phone'] ?? '');
+  $address = trim($_POST['address'] ?? '');
+  $note    = trim($_POST['note'] ?? '');
+  $payment = $_POST['payment'] ?? 'cod';
 
-  ];
+  if ($name === '') $errors[] = 'Vui lòng nhập họ và tên.';
+  if ($phone === '') $errors[] = 'Vui lòng nhập số điện thoại.';
+  if ($address === '') $errors[] = 'Vui lòng nhập địa chỉ.';
 
-  // clear cart
-  $_SESSION['cart'] = [];
+  if (!$errors) {
+    $total = 0;
+    foreach ($cartItems as $it) {
+      $total += ((int)$it['price']) * ((int)$it['qty']);
+    }
 
-  header('Location: /thongdong/customer/order-confirmation.php');
-  exit;
+    $order = [
+      'id'      => 'TD' . date('ymdHis'),
+      'time'    => date('H:i d/m/Y'),
+      'name'    => $name,
+      'phone'   => $phone,
+      'address' => $address,
+      'note'    => $note,
+      'payment' => $payment,
+      'items'   => $cartItems,
+      'total'   => $total,
+      'status'  => 'Chờ xử lý',
+    ];
+
+    // đơn gần nhất
+    $_SESSION['order'] = $order;
+
+    // lịch sử đơn (để đổi trả / account / admin đọc)
+    if (!isset($_SESSION['order_history'])) $_SESSION['order_history'] = [];
+    array_unshift($_SESSION['order_history'], $order);
+
+    // clear cart
+    $_SESSION['cart'] = [];
+
+    header('Location: /thongdong/customer/order-confirmation.php');
+    exit;
+  }
 }
 
 include '../includes/customer-layout-top.php';
@@ -37,6 +134,14 @@ include '../includes/customer-layout-top.php';
   <section class="card">
     <h1 style="margin:0 0 14px;">Thanh toán</h1>
 
+    <?php if (!empty($errors)): ?>
+      <div class="auth-alert" style="margin:0 0 14px;">
+        <?php foreach ($errors as $e): ?>
+          <div>• <?php echo htmlspecialchars($e); ?></div>
+        <?php endforeach; ?>
+      </div>
+    <?php endif; ?>
+
     <form method="post" class="checkout-grid">
 
       <!-- THÔNG TIN KHÁCH -->
@@ -45,53 +150,54 @@ include '../includes/customer-layout-top.php';
 
         <div class="form-group">
           <label>Họ và tên *</label>
-          <input class="input" name="name" required>
+          <input class="input" name="name" required value="<?php echo htmlspecialchars($_POST['name'] ?? ($_SESSION['customer']['name'] ?? '')); ?>">
         </div>
 
         <div class="form-group">
           <label>Số điện thoại *</label>
-          <input class="input" name="phone" required>
+          <input class="input" name="phone" required value="<?php echo htmlspecialchars($_POST['phone'] ?? ''); ?>">
         </div>
 
         <div class="form-group">
           <label>Địa chỉ *</label>
-          <textarea class="input" name="address" rows="3" required></textarea>
+          <textarea class="input" name="address" rows="3" required><?php echo htmlspecialchars($_POST['address'] ?? ''); ?></textarea>
         </div>
-<div class="form-group">
-  <label>Hình thức thanh toán *</label>
 
-  <div class="pay-box">
-    <label class="pay-item">
-      <input type="radio" name="payment" value="cod" checked>
-      <div>
-        <b>COD</b>
-        <div class="muted">Thanh toán khi nhận hàng</div>
-      </div>
-    </label>
+        <div class="form-group">
+          <label>Hình thức thanh toán *</label>
 
-    <label class="pay-item">
-      <input type="radio" name="payment" value="bank">
-      <div>
-        <b>Chuyển khoản</b>
-        <div class="muted">Chuyển khoản trước khi giao</div>
-      </div>
-    </label>
-  </div>
+          <div class="pay-box">
+            <label class="pay-item">
+              <input type="radio" name="payment" value="cod" <?php echo (($_POST['payment'] ?? 'cod') === 'cod') ? 'checked' : ''; ?>>
+              <div>
+                <b>COD</b>
+                <div class="muted">Thanh toán khi nhận hàng</div>
+              </div>
+            </label>
 
-  <div id="bankInfo" class="bank-info" style="display:none;">
-    <b>Thông tin chuyển khoản</b>
-    <div class="muted" style="margin-top:6px;">
-      Ngân hàng: <b>Vietcombank</b><br>
-      Số tài khoản: <b>0123456789</b><br>
-      Chủ tài khoản: <b>THONG DONG</b><br>
-      Nội dung: <b>TD + SĐT</b>
-    </div>
-  </div>
-</div>
+            <label class="pay-item">
+              <input type="radio" name="payment" value="bank" <?php echo (($_POST['payment'] ?? 'cod') === 'bank') ? 'checked' : ''; ?>>
+              <div>
+                <b>Chuyển khoản</b>
+                <div class="muted">Chuyển khoản trước khi giao</div>
+              </div>
+            </label>
+          </div>
+
+          <div id="bankInfo" class="bank-info" style="display:none;">
+            <b>Thông tin chuyển khoản</b>
+            <div class="muted" style="margin-top:6px;">
+              Ngân hàng: <b>Vietcombank</b><br>
+              Số tài khoản: <b>0123456789</b><br>
+              Chủ tài khoản: <b>THONG DONG</b><br>
+              Nội dung: <b>TD + SĐT</b>
+            </div>
+          </div>
+        </div>
 
         <div class="form-group">
           <label>Ghi chú (tuỳ chọn)</label>
-          <textarea class="input" name="note" rows="3"></textarea>
+          <textarea class="input" name="note" rows="3"><?php echo htmlspecialchars($_POST['note'] ?? ''); ?></textarea>
         </div>
       </div>
 
@@ -102,16 +208,14 @@ include '../includes/customer-layout-top.php';
         <div class="order-summary">
           <?php
             $total = 0;
-            foreach ($_SESSION['cart'] as $pid => $qty):
-              $p = findProductById($pid, $PRODUCTS);
-              if (!$p) continue;
-              $sub = $p['price'] * $qty;
+            foreach ($cartItems as $it):
+              $sub = ((int)$it['price']) * ((int)$it['qty']);
               $total += $sub;
           ?>
             <div class="order-row">
               <div>
-                <b><?php echo htmlspecialchars($p['name']); ?></b>
-                <div class="muted">x <?php echo $qty; ?></div>
+                <b><?php echo htmlspecialchars($it['name']); ?></b>
+                <div class="muted">x <?php echo (int)$it['qty']; ?></div>
               </div>
               <div><?php echo formatVND($sub); ?></div>
             </div>
@@ -131,6 +235,7 @@ include '../includes/customer-layout-top.php';
     </form>
   </section>
 </main>
+
 <script>
   const bankBox = document.getElementById('bankInfo');
   const radios = document.querySelectorAll('input[name="payment"]');
