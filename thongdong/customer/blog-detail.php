@@ -12,7 +12,7 @@ include '../includes/customer-layout-top.php';
   <?php if (!$post): ?>
     <section class="card">
       <h1 style="margin:0 0 8px;">Không tìm thấy bài viết</h1>
-      <p class="muted">Bà thử quay lại trang Nhật ký nha.</p>
+      <p class="muted">Bạn thử quay lại trang Nhật ký nha.</p>
       <a class="btn" href="/thongdong/customer/blog.php">Về Nhật ký</a>
     </section>
   <?php else: ?>

@@ -4,21 +4,15 @@ require __DIR__ . '/includes/admin-guard.php';
 
 $pageTitle = "Nhật ký - Admin Thong Dong";
 
-/**
- * DEMO posts (mặt hình thức trước).
- * Sau này nối JSON/DB thì thay $posts.
- *
- * img: dùng đường dẫn ảnh bất kỳ. Nếu chưa có ảnh, cứ để placeholder.
- */
 $posts = [
   [
     'id' => 'B001',
     'title' => 'Thong Dong và một góc Tết trong căn phòng nhỏ',
     'excerpt' => 'Có những ngày mình chỉ muốn chậm lại, thắp một mùi hương ấm và nghe phố thở...',
-    'category' => 'Tết – Đỏ Vàng',
+    'category' => 'Tết Thương',
     'date' => '17/12/2025',
     'status' => 'Đã đăng',
-    'img' => '/thongdong/assets/img/blog/blog-1.jpg',
+    'img' => '/thongdong/assets/img/about/tet-1.jpg',
   ],
   [
     'id' => 'B002',
@@ -27,7 +21,7 @@ $posts = [
     'category' => 'Hướng dẫn',
     'date' => '16/12/2025',
     'status' => 'Đã đăng',
-    'img' => '/thongdong/assets/img/blog/blog-2.jpg',
+    'img' => '/thongdong/assets/img/about/tet-2.jpg',
   ],
   [
     'id' => 'B003',
@@ -36,7 +30,7 @@ $posts = [
     'category' => 'Thuần Việt',
     'date' => '15/12/2025',
     'status' => 'Nháp',
-    'img' => '/thongdong/assets/img/blog/blog-3.jpg',
+    'img' => '/thongdong/assets/img/about/tet-3.png',
   ],
 ];
 
@@ -64,7 +58,7 @@ include __DIR__ . '/includes/admin-layout-top.php';
     <div class="admin-head-top">
       <div>
         <h1 class="admin-page-title">Nhật ký</h1>
-        <p class="admin-page-sub muted">Quản lý bài viết blog (demo UI).</p>
+        <p class="admin-page-sub muted"></p>
       </div>
 
       <div class="admin-actions">
@@ -146,7 +140,7 @@ include __DIR__ . '/includes/admin-layout-top.php';
   <!-- PANELS (DEMO) -->
   <?php if (!empty($_GET['new'])): ?>
     <section class="admin-card" style="padding:16px; margin-top:14px;">
-      <h3 style="margin:0 0 10px;">Thêm bài (demo)</h3>
+      <h3 style="margin:0 0 10px;">Thêm bài</h3>
       <form class="admin-form" method="post" action="#">
         <div class="form-row">
           <div class="control">
@@ -184,22 +178,21 @@ include __DIR__ . '/includes/admin-layout-top.php';
         </div>
 
         <div class="admin-td-actions" style="justify-content:flex-start; margin-top:12px;">
-          <button class="btn" type="button">Lưu (demo)</button>
+          <button class="btn" type="button">Lưu</button>
           <a class="btn outline" href="/thongdong/admin/blog.php">Huỷ</a>
         </div>
       </form>
       <div class="muted" style="margin-top:10px;">
-        *Đang là demo UI. Khi nối JSON/DB, mình sẽ làm POST lưu dữ liệu thật.
       </div>
     </section>
   <?php endif; ?>
 
   <?php if (!empty($_GET['edit'])): ?>
     <section class="admin-card" style="padding:16px; margin-top:14px;">
-      <h3 style="margin:0 0 10px;">Sửa bài <?php echo htmlspecialchars($_GET['edit']); ?> (demo)</h3>
-      <div class="muted">Sau này sẽ load đúng bài từ JSON/DB và cho chỉnh.</div>
+      <h3 style="margin:0 0 10px;">Sửa bài <?php echo htmlspecialchars($_GET['edit']); ?></h3>
+      <div class="muted"></div>
       <div class="admin-td-actions" style="justify-content:flex-start; margin-top:12px;">
-        <a class="btn" href="/thongdong/admin/blog.php?edit=<?php echo urlencode($_GET['edit']); ?>&save=1">Lưu (demo)</a>
+        <a class="btn" href="/thongdong/admin/blog.php?edit=<?php echo urlencode($_GET['edit']); ?>&save=1">Lưu</a>
         <a class="btn outline" href="/thongdong/admin/blog.php">Đóng</a>
       </div>
     </section>
@@ -207,7 +200,7 @@ include __DIR__ . '/includes/admin-layout-top.php';
 
   <?php if (!empty($_GET['view'])): ?>
     <section class="admin-card" style="padding:16px; margin-top:14px;">
-      <h3 style="margin:0 0 10px;">Xem bài <?php echo htmlspecialchars($_GET['view']); ?> (demo)</h3>
+      <h3 style="margin:0 0 10px;">Xem bài <?php echo htmlspecialchars($_GET['view']); ?></h3>
       <div class="muted">Sau này sẽ hiển thị bài đầy đủ + preview giống customer/blog-detail.</div>
       <div class="admin-td-actions" style="justify-content:flex-start; margin-top:12px;">
         <a class="btn outline" href="/thongdong/admin/blog.php">Đóng</a>
@@ -217,10 +210,10 @@ include __DIR__ . '/includes/admin-layout-top.php';
 
   <?php if (!empty($_GET['delete'])): ?>
     <section class="admin-card" style="padding:16px; margin-top:14px;">
-      <h3 style="margin:0 0 10px;">Xoá bài <?php echo htmlspecialchars($_GET['delete']); ?> (demo)</h3>
-      <div class="muted">Sau này sẽ xoá trong JSON/DB, hiện tại chỉ là demo UI.</div>
+      <h3 style="margin:0 0 10px;">Xoá bài <?php echo htmlspecialchars($_GET['delete']); ?></h3>
+      <div class="muted"></div>
       <div class="admin-td-actions" style="justify-content:flex-start; margin-top:12px;">
-        <button class="btn" type="button">Xác nhận xoá (demo)</button>
+        <button class="btn" type="button">Xác nhận xoá</button>
         <a class="btn outline" href="/thongdong/admin/blog.php">Huỷ</a>
       </div>
     </section>

@@ -44,10 +44,14 @@ include '../includes/customer-layout-top.php';
     </nav>
 
     <section class="product-detail card">
-      <div class="pd-left">
-        <div class="pd-img">
-          <span>Ảnh sản phẩm</span>
-        </div>
+<div class="pd-img">
+  <img
+    src="<?php echo htmlspecialchars($product['image'] ?? '/thongdong/assets/img/products/placeholder.jpg'); ?>"
+    alt="<?php echo htmlspecialchars($product['name'] ?? 'Sản phẩm'); ?>"
+    loading="lazy"
+  >
+</div>
+
       </div>
 
       <div class="pd-right">
@@ -86,7 +90,7 @@ include '../includes/customer-layout-top.php';
     </section>
 
     <section class="card" style="margin-top:16px;">
-      <h3 style="margin:0 0 10px;">Có thể bà cũng thích</h3>
+      <h3 style="margin:0 0 10px;">Có thể bạn cũng thích</h3>
       <div class="rel-grid">
         <?php
           // gợi ý 4 sp khác (đơn giản)
@@ -97,7 +101,14 @@ include '../includes/customer-layout-top.php';
             if ($count > 4) break;
         ?>
           <a class="rel-card" href="/thongdong/customer/product-detail.php?id=<?php echo (int)$p['id']; ?>">
-            <div class="rel-img"><span>Ảnh</span></div>
+            <div class="rel-img">
+  <img
+    src="<?php echo htmlspecialchars($p['image'] ?? '/thongdong/assets/img/products/placeholder.jpg'); ?>"
+    alt="<?php echo htmlspecialchars($p['name'] ?? 'Sản phẩm'); ?>"
+    loading="lazy"
+  >
+</div>
+
             <div class="rel-body">
               <div class="rel-name"><?php echo htmlspecialchars($p['name']); ?></div>
               <div class="price"><?php echo formatVND($p['price']); ?></div>
@@ -123,21 +134,3 @@ include '../includes/customer-layout-top.php';
   <?php endif; ?>
 </main>
 
-<?php include '../includes/customer-layout-bottom.php'; ?>
-<div class="product-actions">
-  <!-- giữ nút hiện có của bà -->
-
-  <a class="btn outline" href="/thongdong/customer/reviews.php?product=<?php echo (int)$product['id']; ?>">
-    Xem review
-  </a>
-
-  <?php if (!empty($_SESSION['customer'])): ?>
-    <a class="btn outline" href="/thongdong/customer/review-create.php?product=<?php echo (int)$product['id']; ?>">
-      Viết review
-    </a>
-  <?php else: ?>
-    <a class="btn outline" href="/thongdong/customer/login.php">
-      Đăng nhập để review
-    </a>
-  <?php endif; ?>
-</div>

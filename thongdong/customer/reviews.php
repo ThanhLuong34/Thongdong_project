@@ -57,7 +57,7 @@ include '../includes/customer-layout-top.php';
     <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:12px; flex-wrap:wrap;">
       <div>
         <h1 class="page-title" style="margin:0 0 6px;">Review khách hàng</h1>
-        <p class="muted" style="margin:0;">Chỗ này để bà xem mọi người nói gì về nến Thong Dong nè.</p>
+        <p class="muted" style="margin:0;">Chỗ này để bạn xem mọi người nói gì về nến Thong Dong nè.</p>
       </div>
 
       <div class="review-actions">
@@ -70,7 +70,7 @@ include '../includes/customer-layout-top.php';
       <?php if (count($filtered) === 0): ?>
         <div class="card" style="padding:16px;">
           <b>Chưa có review nào.</b>
-          <div class="muted" style="margin-top:6px;">Bà có thể là người đầu tiên viết review nha.</div>
+          <div class="muted" style="margin-top:6px;">Bạn có thể là người đầu tiên viết review nha.</div>
         </div>
       <?php else: ?>
         <?php foreach ($filtered as $r): ?>

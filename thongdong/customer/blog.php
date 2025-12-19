@@ -7,7 +7,7 @@ include '../includes/customer-layout-top.php';
 <main class="container" style="padding:34px 0 70px;">
   <section class="card">
     <h1 style="margin:0 0 8px;">Nhật ký</h1>
-    <p class="muted">Những mẩu chuyện nhỏ – chậm lại một chút giữa đời thường.</p>
+    <p class="muted">Những mẩu chuyện nhỏ - chậm lại một chút giữa đời thường.</p>
   </section>
 
   <section class="blog-grid">

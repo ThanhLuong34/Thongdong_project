@@ -97,7 +97,7 @@ include '../includes/customer-layout-top.php';
 
       <div class="form-group">
         <label>Nội dung *</label>
-        <textarea class="input" name="content" rows="5" placeholder="Bà chia sẻ cảm nhận thật nha..." required><?php echo htmlspecialchars($_POST['content'] ?? ''); ?></textarea>
+        <textarea class="input" name="content" rows="5" placeholder="Bạn chia sẻ cảm nhận thật nha..." required><?php echo htmlspecialchars($_POST['content'] ?? ''); ?></textarea>
       </div>
 
       <div class="review-actions">

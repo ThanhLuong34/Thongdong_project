@@ -7,10 +7,7 @@ $pageTitle = "Cài đặt - Thong Dong";
 $success = '';
 $errors = [];
 
-/**
- * Demo data.
- * Nếu bà có file JSON/DB settings thì thay phần $values này bằng code đọc dữ liệu của bà.
- */
+
 $values = [
   'store_name'  => 'Thong Dong',
   'slogan'      => 'Nến thơm thuần Việt dành cho người Việt.',
@@ -43,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if ($values['address'] === '') $errors[] = 'Vui lòng nhập địa chỉ.';
 
   if (!$errors) {
-    // TODO: nếu bà muốn lưu JSON/DB thì thêm logic ở đây
+
     $success = 'Đã lưu cài đặt (demo).';
   }
 }

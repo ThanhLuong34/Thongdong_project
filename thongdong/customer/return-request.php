@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <?php if ($success): ?>
       <div class="auth-alert" style="margin-bottom:14px;">
-        <b>Đã gửi yêu cầu!</b> Mã yêu cầu của bà là <b><?php echo h($successId); ?></b>.
+        <b>Đã gửi yêu cầu!</b> Mã yêu cầu của bạn là <b><?php echo h($successId); ?></b>.
         <div class="muted" style="margin-top:8px;">
           <a class="btn small" href="/thongdong/customer/my-returns.php" style="display:inline-flex;">Xem lại yêu cầu đổi/trả</a>
         </div>
@@ -139,7 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php endforeach; ?>
           </select>
           <div class="muted" style="margin-top:6px;">
-            Nếu không thấy đơn, kiểm tra lại bà đã đặt hàng và có “order_history”.
+            Nếu không thấy đơn, kiểm tra lại bạn đã đặt hàng và có “order_history”.
           </div>
         </div>
 

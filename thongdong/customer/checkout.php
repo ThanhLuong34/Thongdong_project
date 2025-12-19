@@ -203,7 +203,7 @@ include '../includes/customer-layout-top.php';
 
       <!-- TÓM TẮT ĐƠN -->
       <div class="checkout-right">
-        <h3>Đơn hàng của bà</h3>
+        <h3>Đơn hàng của bạn</h3>
 
         <div class="order-summary">
           <?php
@@ -230,6 +230,10 @@ include '../includes/customer-layout-top.php';
         <button class="btn" type="submit" style="width:100%; margin-top:12px;">
           Đặt hàng
         </button>
+        <div class="muted">Phí ship mặc định cho mọi đơn hàng là 25.0000. Đơn hàng trên 500.000 sẽ được miễn phí ship. Bạn vui lòng chuẩn bị để thanh toán với shipper nhé!</div>
+              </div>
+        <div class="muted"></div>
+              </div>
       </div>
 
     </form>

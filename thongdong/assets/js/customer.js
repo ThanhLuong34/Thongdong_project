@@ -7,15 +7,32 @@
   const priceEl = document.getElementById('priceFilter');
 
   const products = [
-    { id: 1, name: 'Nến Quế Ấm', price: 189000, cat: 'tet', tag: 'Tết – Đỏ Vàng' },
-    { id: 2, name: 'Nến Sen Nhẹ', price: 209000, cat: 'viet', tag: 'Thuần Việt' },
-    { id: 3, name: 'Nến Trà Xanh', price: 199000, cat: 'viet', tag: 'Thuần Việt' },
-    { id: 4, name: 'Set Quà “Thong Dong”', price: 459000, cat: 'gift', tag: 'Quà tặng' },
-    { id: 5, name: 'Nến Bưởi Sáng', price: 219000, cat: 'viet', tag: 'Thuần Việt' },
-    { id: 6, name: 'Nến Gừng Nồng', price: 189000, cat: 'tet', tag: 'Tết – Đỏ Vàng' },
-    { id: 7, name: 'Set Quà “Tân Niên”', price: 529000, cat: 'gift', tag: 'Quà tặng' },
-    { id: 8, name: 'Nến Gỗ Mộc', price: 239000, cat: 'tet', tag: 'Tết – Đỏ Vàng' },
-  ];
+  { id: 1,  name: 'Nến Thơm Đà Lạt (Pine & Wood)', price: 150000, cat: 'nen_thom', tag: 'Nến Thơm', image: '/thongdong/assets/img/products/nen-da-lat.jpg' },
+  { id: 2,  name: 'Nến Thơm Good Morning',        price: 150000, cat: 'nen_thom', tag: 'Nến Thơm' },
+  { id: 3,  name: 'Nến Thơm Lavender Garden',     price: 180000, cat: 'nen_thom', tag: 'Nến Thơm' },
+
+  { id: 4,  name: 'Nến Thơm "Tết Sum Vầy"',       price: 250000, cat: 'le_hoi', tag: 'Bộ sưu tập mùa Lễ Hội' },
+  { id: 5,  name: 'Nến Tạo Hình Bánh Chưng',      price: 120000, cat: 'le_hoi', tag: 'Bộ sưu tập mùa Lễ Hội' },
+  { id: 6,  name: 'Nến Tạo Hình Quả Quýt Tài Lộc',price:  90000, cat: 'le_hoi', tag: 'Bộ sưu tập mùa Lễ Hội' },
+  { id: 7,  name: 'Set Quà Tết "Phú Quý"',        price: 550000, cat: 'le_hoi', tag: 'Bộ sưu tập mùa Lễ Hội' },
+
+  { id: 8,  name: 'Tinh Dầu Sả Chanh (Lemongrass)',price:  85000, cat: 'td_phong', tag: 'Tinh Dầu Thơm Phòng' },
+  { id: 9,  name: 'Tinh Dầu Ngọc Lan Tây (Ylang Ylang)', price: 95000, cat: 'td_phong', tag: 'Tinh Dầu Thơm Phòng' },
+
+  { id: 10, name: 'Nến Trụ Trơn Basic (Không mùi)', price: 50000, cat: 'nen_trang_tri', tag: 'Nến Trang Trí' },
+  { id: 11, name: 'Nến Bubble Cube (Nến khối lập phương)', price: 75000, cat: 'nen_trang_tri', tag: 'Nến Trang Trí' },
+
+  { id: 12, name: 'Bộ Que Khuếch Tán Hương Biển',  price: 220000, cat: 'que_khuech_tan', tag: 'Que Khuếch Tán Tinh Dầu' },
+  { id: 13, name: 'Máy Xông Tinh Dầu Vân Gỗ',      price: 350000, cat: 'may_khuech_tan', tag: 'Máy Khuếch Tán Tinh Dầu' },
+  { id: 14, name: 'Tinh Dầu Treo Xe Cà Phê',       price:  65000, cat: 'td_treo', tag: 'Tinh Dầu Treo' },
+
+  { id: 15, name: 'Kéo Cắt Bấc Nến (Wick Trimmer)',price: 110000, cat: 'phu_kien', tag: 'Phụ kiện nến' },
+  { id: 16, name: 'Đèn Đốt Nến Thơm (Candle Warmer)',price: 450000, cat: 'phu_kien', tag: 'Phụ kiện nến' },
+
+  { id: 17, name: 'Set Quà "Self-Love" (Cho Nàng)',price: 390000, cat: 'set_qua', tag: 'Set quà tặng' },
+  { id: 18, name: 'Nến Thơm Mùa Lễ Hội "Gingerbread"', price: 200000, cat: 'le_hoi', tag: 'Bộ sưu tập mùa Lễ Hội' },
+];
+
 
   const fmt = (n) => n.toLocaleString('vi-VN') + 'đ';
 

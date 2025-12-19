@@ -32,7 +32,7 @@ include '../includes/customer-layout-top.php';
     </div>
   </section>
 <div class="hero-media">
-  <img src="/thongdong/assets/img/banners/hero.jpg" alt="Thong Dong banner">
+  <img src="/thongdong/assets/img/banner/hero.png" alt="Thong Dong banner">
 </div>
 
   <!-- FEATURED PRODUCTS -->
@@ -51,8 +51,13 @@ include '../includes/customer-layout-top.php';
           <article class="product-card">
             <a class="product-link" href="/thongdong/customer/product-detail.php?id=<?php echo (int)$p['id']; ?>">
               <div class="product-img">
-                <span>Ảnh sản phẩm</span>
-              </div>
+  <img
+    src="<?php echo htmlspecialchars($p['image'] ?? '/thongdong/assets/img/products/placeholder.jpg'); ?>"
+    alt="<?php echo htmlspecialchars($p['name'] ?? 'Sản phẩm'); ?>"
+    loading="lazy"
+  >
+</div>
+
               <div class="product-body">
                 <h3 class="product-name"><?php echo htmlspecialchars($p['name']); ?></h3>
                 <div class="price"><?php echo formatVND($p['price']); ?></div>
@@ -84,7 +89,7 @@ include '../includes/customer-layout-top.php';
         <div class="howto-step">
           <div class="step-ico">🕯️</div>
           <div class="step-title">Lần đầu thắp đủ lâu</div>
-          <div class="muted step-text">Để mặt nến chảy đều 1–2 giờ để tránh lõm.</div>
+          <div class="muted step-text">Để mặt nến chảy đều 1-2 giờ để tránh lõm.</div>
         </div>
 
         <div class="howto-step">

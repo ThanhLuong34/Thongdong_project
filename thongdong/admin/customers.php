@@ -181,7 +181,7 @@ include __DIR__ . '/includes/admin-layout-top.php';
     </table>
 
     <div class="muted" style="padding:10px 12px 14px;">
-      *Demo UI. Khi nối dữ liệu thật, mình sẽ cho nút Khoá/Mở cập nhật JSON/DB.
+    
     </div>
   </section>
 
@@ -198,8 +198,8 @@ include __DIR__ . '/includes/admin-layout-top.php';
 
   <?php if (!empty($_GET['lock'])): ?>
     <section class="admin-card" style="padding:16px; margin-top:14px;">
-      <h3 style="margin:0 0 8px;">Khoá khách <?php echo htmlspecialchars($_GET['lock']); ?> (demo)</h3>
-      <div class="muted">Sau này mình sẽ xử lý lưu trạng thái vào JSON/DB.</div>
+      <h3 style="margin:0 0 8px;">Khoá khách <?php echo htmlspecialchars($_GET['lock']); ?></h3>
+
       <div style="margin-top:12px; display:flex; gap:10px;">
         <button class="btn" type="button">Xác nhận khoá (demo)</button>
         <a class="btn outline" href="/thongdong/admin/customers.php">Huỷ</a>
@@ -209,10 +209,10 @@ include __DIR__ . '/includes/admin-layout-top.php';
 
   <?php if (!empty($_GET['unlock'])): ?>
     <section class="admin-card" style="padding:16px; margin-top:14px;">
-      <h3 style="margin:0 0 8px;">Mở khoá khách <?php echo htmlspecialchars($_GET['unlock']); ?> (demo)</h3>
-      <div class="muted">Sau này mình sẽ xử lý lưu trạng thái vào JSON/DB.</div>
+      <h3 style="margin:0 0 8px;">Mở khoá khách <?php echo htmlspecialchars($_GET['unlock']); ?> </h3>
+
       <div style="margin-top:12px; display:flex; gap:10px;">
-        <button class="btn" type="button">Xác nhận mở (demo)</button>
+        <button class="btn" type="button">Xác nhận mở</button>
         <a class="btn outline" href="/thongdong/admin/customers.php">Huỷ</a>
       </div>
     </section>

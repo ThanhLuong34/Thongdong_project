@@ -1,42 +1,64 @@
 [
     {
         "id": "p001",
-        "name": "Nến Quế Ấm",
-        "price": 189000,
-        "category": "Tet-DoVang",
+        "name": "Nến Thơm Đà Lạt (Pine & Wood)",
+        "price": 150000,
+        "category": "Nến Thơm",
         "stock": 24,
-        "status": "active",
-        "image": "\/thongdong\/assets\/img\/products\/nen-que-am.jpg",
-        "desc": "Mùi quế ấm – hợp vibe Tết, phòng khách, góc đọc sách."
+        "status": "Đang bán",
+        "image": "\/thongdong\/assets\/img\/products\/da-lat.png",
+        "desc": "Hương gỗ thông và sương sớm, mang lại cảm giác se lạnh của Đà Lạt",
+        "img": "thongdong\/assets\/img\/products\/da-lat.png"
     },
     {
         "id": "p002",
-        "name": "Nến Sen Nhẹ",
-        "price": 209000,
-        "category": "ThuanViet",
+        "name": "Nến Thơm Good Morning",
+        "price": 150000,
+        "category": "Nến Thơm",
         "stock": 18,
-        "status": "active",
-        "image": "\/thongdong\/assets\/img\/products\/nen-sen-nhe.jpg",
-        "desc": "Sen thanh – nhẹ, sạch, rất hợp thư giãn buổi tối."
+        "status": "Đang bán",
+        "image": "\/thongdong\/assets\/img\/products\/good-morning.png",
+        "desc": "Hương cam chanh và bạc hà giúp tỉnh táo buổi sáng."
     },
     {
         "id": "p003",
-        "name": "Nến Trà Xanh",
-        "price": 199000,
-        "category": "ThuanViet",
+        "name": "Nến Thơm Lavender Garden",
+        "price": 180000,
+        "category": "Nến Thơm",
         "stock": 12,
-        "status": "active",
-        "image": "\/thongdong\/assets\/img\/products\/nen-tra-xanh.jpg",
-        "desc": "Trà xanh dịu – cảm giác mát, hợp làm việc và thiền."
+        "status": "Đang bán",
+        "image": "\/thongdong\/assets\/img\/products\/lavender-garden.png",
+        "desc": "Hương hoa oải hương thư giãn, hỗ trợ giấc ngủ"
     },
     {
         "id": "p004",
-        "name": "Set quà “Thong Dong”",
-        "price": 459000,
-        "category": "QuaTang",
+        "name": "Nến Thơm Tết Sum Vầy",
+        "price": 250000,
+        "category": "Bộ sưu tập mùa Lễ Hội",
         "stock": 8,
-        "status": "active",
-        "image": "\/thongdong\/assets\/img\/products\/set-qua-thongdong.jpg",
-        "desc": "Set quà tặng chỉnh chu – hợp sinh nhật, tân gia."
+        "status": "Đang bán",
+        "image": "\/thongdong\/assets\/img\/products\/tet-sum-vay.png",
+        "desc": "Hương trầm hương và hoa mai, ấm áp không khí Tết cổ truyền"
+    },
+    {
+        "id": "p005",
+        "name": "Nến Tạo Hình Bánh Chưng",
+        "price": 120000,
+        "category": "Bộ sưu tập mùa Lễ Hội",
+        "stock": 24,
+        "status": "Đang bán",
+        "image": "\/thongdong\/assets\/img\/products\/da-lat.png",
+        "desc": "Nến trang trí hình bánh chưng xanh, hương lá nếp",
+        "img": "thongdong\/assets\/img\/products\/banh-chung.png"
+    },
+    {
+        "id": "p006",
+        "name": "Nến Tạo Hình Quả Quýt Tài Lộc",
+        "price": 90000,
+        "category": "Bộ sưu tập mùa Lễ Hội",
+        "stock": 18,
+        "status": "Đang bán",
+        "image": "\/thongdong\/assets\/img\/products\/quyt.png",
+        "desc": "Nến hình quả quýt vàng ươm, hương vỏ quýt thơm mát"
     }
 ]

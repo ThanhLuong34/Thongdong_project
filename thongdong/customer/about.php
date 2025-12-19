@@ -8,7 +8,7 @@
     <div class="about-hero-left">
       <h1 style="margin:0 0 10px;">Giới thiệu</h1>
       <p class="muted" style="margin:0 0 14px;">
-        Thong Dong là một góc nhỏ dành cho những điều an yên — mùi hương thuần Việt cho người Việt.
+        Thong Dong là một góc nhỏ dành cho những điều an yên - mùi hương thuần Việt cho người Việt.
       </p>
       <div class="about-cta">
         <a class="btn" href="/thongdong/customer/shop.php">Xem cửa hàng</a>
@@ -16,23 +16,25 @@
       </div>
     </div>
 
-    <div class="about-hero-right">
-      <div class="about-photo">
-        <span>Ảnh/Poster thương hiệu</span>
-      </div>
-    </div>
+<div class="about-media card">
+  <img class="about-media-img logo"
+       src="/thongdong/assets/img/brand/logoo.png"
+       alt="Thong Dong Logo"
+       onerror="this.style.display='none'; this.parentElement.classList.add('no-img');">
+
+</div>
   </section>
 
   <!-- STORY -->
   <section class="card about-section">
     <h2 class="about-title">Câu chuyện Thong Dong</h2>
     <p>
-      Có những ngày mình chỉ muốn chậm lại một chút. Thong Dong ra đời từ những khoảnh khắc như vậy —
+      Có những ngày mình chỉ muốn chậm lại một chút. Thong Dong ra đời từ những khoảnh khắc như vậy...
       khi căn phòng nhỏ cần một mùi hương ấm, một ngọn lửa dịu, để lòng mình “thở” nhẹ hơn.
     </p>
     <p>
-      Tụi mình chọn những mùi hương gần gũi: <b>sen, bưởi, trà, quế, gừng, gỗ mộc</b>…
-      để mỗi lần thắp nến là một lần nhắc mình: “Bình yên cũng là một lựa chọn.”
+      Tụi mình chọn những mùi hương gần gũi: <b>hoa hồng, nhài, quế, gừng, gỗ mộc</b>…
+      để mỗi lần thắp nến là một lần nhắc mình: “Bình yên là do bạn lựa chọn.”
     </p>
   </section>
 
@@ -45,7 +47,7 @@
 
     <article class="card about-card">
       <h3>Đủ tinh tế</h3>
-      <p class="muted">Thiết kế tối giản, sang và ấm — đúng vibe Tết, đúng vibe nhà.</p>
+      <p class="muted">Thiết kế tối giản, sang và ấm, mang lại vibe Tết, đúng vibe nhà.</p>
     </article>
 
     <article class="card about-card">
@@ -58,19 +60,22 @@
   <section class="card about-section">
     <h2 class="about-title">Cam kết nhỏ</h2>
     <ul class="about-list">
-      <li><b>Thơm dễ chịu</b> — không gắt, hợp không gian sinh hoạt.</li>
-      <li><b>Cháy đều</b> — gợi ý cách thắp đúng để nến bền hơn.</li>
-      <li><b>Hỗ trợ nhanh</b> — cần tư vấn mùi hương, tụi mình trả lời liền.</li>
+      <li><b>Thơm dễ chịu</b> - không gắt, hợp không gian sinh hoạt.</li>
+      <li><b>Cháy đều</b> - gợi ý cách thắp đúng để nến bền hơn.</li>
+      <li><b>Hỗ trợ nhanh</b> - cần tư vấn mùi hương, tụi mình trả lời liền.</li>
     </ul>
   </section>
 
   <!-- (NEW) ĐẾN TIỆM -->
   <section class="card about-section visit">
     <div class="visit-left">
-      <h2 class="about-title">Đến tiệm</h2>
+      <h2 class="about-title">Đến thăm tụi mình tại (COMING SOON)</h2>
       <p class="muted" style="margin-top:0;">
-        Nếu bà muốn thử mùi trực tiếp, ghé Thong Dong nha.
-      </p>
+        Thong Dong hiện chỉ hoạt động online, dự kiến sẽ ra mắt cửa hàng đầu tiên vào đầu năm 2026 tại Đà Nẵng.
+</p>
+      <p class="muted" style="margin-top:0;">
+        Đợi Thong Dong nhé!
+</p>
 
       <div class="visit-item">
         <div class="muted">Địa chỉ</div>
@@ -104,33 +109,32 @@
       </div>
     </div>
 
-    <div class="visit-right">
-      <div class="map-box">
-        <span>Bản đồ/Ảnh tiệm</span>
-      </div>
-    </div>
+    <div class="about-media card">
+  <img class="about-media-img"
+       src="/thongdong/assets/img/brand/store.jpg"
+       alt="Ảnh cửa hàng Thong Dong"
+       onerror="this.style.display='none'; this.parentElement.classList.add('no-img');">
+  <div class="about-media-fallback">Cửa hàng đầu tiên dự kiến ra mắt tại Đà Nẵng</div>
+</div>
   </section>
 
   <!-- (NEW) MINI GALLERY -->
   <section class="card about-section">
     <h2 class="about-title">Một vài khoảnh khắc</h2>
-    <p class="muted" style="margin-top:0;">Vibe vàng – đỏ – gạch bông, rất “Tết” và rất Việt.</p>
+    <p class="muted" style="margin-top:0;">Thong Dong mang Tết về</p>
 
     <div class="gallery-grid">
       <div class="gallery-item">
-        <img src="/thongdong/assets/img/about/gallery-1.jpg" alt="Thong Dong gallery 1">
+        <img src="/thongdong/assets/img/about/tet-1.jpg" alt="Thong Dong gallery 1">
       </div>
       <div class="gallery-item">
-        <img src="/thongdong/assets/img/about/gallery-2.jpg" alt="Thong Dong gallery 2">
+        <img src="/thongdong/assets/img/about/tet-2.jpg" alt="Thong Dong gallery 2">
       </div>
       <div class="gallery-item">
-        <img src="/thongdong/assets/img/about/gallery-3.jpg" alt="Thong Dong gallery 3">
+        <img src="/thongdong/assets/img/about/tet-3.png" alt="Thong Dong gallery 3">
       </div>
     </div>
 
-    <div class="gallery-note muted">
-      * Nếu chưa có ảnh, bạn có thể copy tạm 1 ảnh bất kỳ đặt đúng tên file để khỏi bị lỗi.
-    </div>
   </section>
 
   <!-- (NEW) FORM LIÊN HỆ NHANH -->

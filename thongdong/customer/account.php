@@ -34,7 +34,7 @@ include '../includes/customer-layout-top.php';
   <section class="account-grid">
     <!-- Thông tin -->
     <article class="card account-card">
-      <h2 class="account-title">Thông tin của bà</h2>
+      <h2 class="account-title">Thông tin của bạn</h2>
       <div class="account-info">
         <div class="info-row">
           <div class="muted">Họ và tên</div>
@@ -51,7 +51,6 @@ include '../includes/customer-layout-top.php';
       </div>
 
       <div class="muted" style="margin-top:10px;">
-        (Demo front-end) Chưa có chức năng sửa hồ sơ / đổi mật khẩu. Nếu bà muốn, tui làm tiếp.
       </div>
     </article>
 
@@ -64,7 +63,7 @@ $recent = array_slice($orders, 0, 3);
   <h3 style="margin:0 0 10px;">Đơn hàng gần đây</h3>
 
   <?php if (empty($orders)): ?>
-    <div class="muted">Chưa có đơn nào. Bà ghé cửa hàng chọn nến nha.</div>
+    <div class="muted">Chưa có đơn nào. Bạn ghé cửa hàng chọn nến nha.</div>
     <a class="btn" style="margin-top:12px;" href="/thongdong/customer/shop.php">Mua ngay</a>
   <?php else: ?>
     <div style="display:grid; gap:10px; margin-top:8px;">

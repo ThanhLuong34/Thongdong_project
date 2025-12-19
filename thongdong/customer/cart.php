@@ -49,7 +49,7 @@ include '../includes/customer-layout-top.php';
     <h1 style="margin:0 0 14px;">Giỏ hàng</h1>
 
     <?php if (empty($_SESSION['cart'])): ?>
-      <p class="muted">Giỏ hàng của bà đang trống.</p>
+      <p class="muted">Giỏ hàng của bạn đang trống.</p>
       <a class="btn" href="/thongdong/customer/shop.php">Tiếp tục mua sắm</a>
 
     <?php else: ?>
