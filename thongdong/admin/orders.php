@@ -3,11 +3,6 @@ session_start();
 require __DIR__ . '/includes/admin-guard.php';
 
 $pageTitle = "Đơn hàng - Admin Thong Dong";
-
-/**
- * Demo data (mặt hình thức trước).
- * Sau này Tiên muốn nối JSON/DB thì mình thay phần $orders = ...
- */
 $orders = [
   [
     'id' => 'TD1021',
@@ -161,7 +156,6 @@ include __DIR__ . '/includes/admin-layout-top.php';
     </table>
 
     <div class="muted" style="padding:10px 12px 14px;">
-      *Bản demo giao diện. Sau sẽ nối dữ liệu thật (JSON/DB) để đơn mới từ checkout hiện lên.
     </div>
   </section>
 
@@ -202,3 +196,4 @@ include __DIR__ . '/includes/admin-layout-top.php';
 </main>
 
 <?php include __DIR__ . '/includes/admin-layout-bottom.php'; ?>
+
