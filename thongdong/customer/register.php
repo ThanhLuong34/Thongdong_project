@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $users[] = ['name' => $name, 'email' => $email, 'password' => $password];
       $_SESSION['users'] = $users;
 
-      $success = 'Đăng ký thành công. Bà đăng nhập nha.';
+      $success = 'Đăng ký thành công. Bạn đăng nhập nha.';
     }
   }
 }

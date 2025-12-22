@@ -1203,6 +1203,31 @@ body.customer-bg{
 }
 .pd-actions { position: relative; }
 .pd-actions a.btn { position: relative; z-index: 50; pointer-events: auto; }
+/* Ảnh chi tiết sản phẩm */
+.pd-img {
+  width: 100%;
+  max-width: 420px;          /* giữ kích thước đẹp như lúc trưa */
+  aspect-ratio: 1 / 1;       /* giữ khung vuông */
+  border-radius: 18px;
+  overflow: hidden;
+  background: #f7f3ef;
+}
+/* Thiết lập font Times New Roman cho tất cả các loại nút */
+.btn, 
+button, 
+.qty-btn, 
+.view-cart-btn, /* Nếu bạn có đặt class riêng cho nút Xem giỏ hàng */
+[class*="btn"] {
+    font-family: "Times New Roman", Times, serif !important;
+}
+
+/* Đảm bảo các nút cụ thể trong chi tiết sản phẩm cũng nhận font này */
+.pd-actions .btn, 
+.pd-actions button,
+.pd-actions a {
+    font-family: "Times New Roman", Times, serif !important;
+}
+
 
 
 

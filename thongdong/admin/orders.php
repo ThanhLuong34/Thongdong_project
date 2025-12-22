@@ -3,6 +3,8 @@ session_start();
 require __DIR__ . '/includes/admin-guard.php';
 
 $pageTitle = "Đơn hàng - Admin Thong Dong";
+
+
 $orders = [
   [
     'id' => 'TD1021',
@@ -156,7 +158,7 @@ include __DIR__ . '/includes/admin-layout-top.php';
     </table>
 
     <div class="muted" style="padding:10px 12px 14px;">
-    </div>
+    
   </section>
 
   <?php if (!empty($_GET['view'])): ?>
@@ -196,4 +198,3 @@ include __DIR__ . '/includes/admin-layout-top.php';
 </main>
 
 <?php include __DIR__ . '/includes/admin-layout-bottom.php'; ?>
-

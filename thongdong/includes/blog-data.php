@@ -35,7 +35,7 @@ $BLOG_POSTS = [
       'Lần đầu thắp: để nến chảy đều mặt trên (tầm 1 đến 2 giờ) để tránh lõm.',
       'Cắt tim nến còn ~0.5cm trước mỗi lần thắp để giảm khói.',
       'Không thắp nơi gió mạnh, và luôn đặt trên bề mặt phẳng.',
-      'img' => '/thongdong/assets/img/about/tet-3.jpg'
+      'img' => '/thongdong/assets/img/about/tet-3.png'
     ],
     'tag' => 'Mẹo dùng nến',
   ],
