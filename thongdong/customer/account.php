@@ -126,7 +126,7 @@ $recent = array_slice($orders, 0, 3);
         <span>🏮</span>
         <div>
           <b>Giới thiệu Thong Dong</b>
-          <div class="muted">Thuần Việt – vàng đỏ – gạch bông</div>
+          <div class="muted">Thuần Việt - Tinh tế - Giá cả phảu chăng</div>
         </div>
       </a>
     </article>

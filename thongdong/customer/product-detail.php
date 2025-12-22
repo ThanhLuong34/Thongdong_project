@@ -76,15 +76,30 @@ include '../includes/customer-layout-top.php';
         </div>
 
         <form method="post" class="pd-actions">
-          <input type="hidden" name="product_id" value="<?php echo (int)$product['id']; ?>">
-          <div class="qty">
-            <button type="button" class="qty-btn" onclick="qtyDown()">-</button>
-            <input id="qtyInput" class="qty-input" type="number" name="qty" value="1" min="1">
-            <button type="button" class="qty-btn" onclick="qtyUp()">+</button>
-          </div>
+  <input type="hidden" name="product_id" value="<?php echo (int)($product['id'] ?? 0); ?>">
 
-          <button class="btn" type="submit" name="add_to_cart">Thêm vào giỏ</button>
-          <a class="btn outline" href="/thongdong/customer/cart.php">Xem giỏ hàng</a>
+  <div class="qty">
+    <button type="button" class="qty-btn" onclick="qtyDown()">-</button>
+    <input id="qtyInput" class="qty-input" type="number" name="qty" value="1" min="1">
+    <button type="button" class="qty-btn" onclick="qtyUp()">+</button>
+  </div>
+
+  <button class="btn" type="submit" name="add_to_cart">Thêm vào giỏ</button>
+  <a class="btn outline" href="/thongdong/customer/cart.php">Xem giỏ hàng</a>
+</form>
+
+<!-- ✅ ĐƯA NÚT REVIEW RA NGOÀI FORM để khỏi bị submit / JS chặn -->
+<div class="pd-actions" style="margin-top:10px;">
+  <button
+    type="button"
+    class="btn outline"
+    onclick="window.location.href='/thongdong/customer/review-create.php?id=<?php echo (int)($product['id'] ?? 0); ?>'">
+    Viết review
+  </button>
+</div>
+
+
+
         </form>
       </div>
     </section>

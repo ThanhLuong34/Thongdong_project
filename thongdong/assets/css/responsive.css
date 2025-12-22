@@ -111,3 +111,5 @@
     grid-template-columns: 1fr !important;
   }
 }
+.pd-actions { position: relative; z-index: 5; }
+.pd-actions button, .pd-actions a { position: relative; z-index: 50; pointer-events: auto; }

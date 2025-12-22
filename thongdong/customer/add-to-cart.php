@@ -1,39 +1,53 @@
 <?php
 session_start();
-require __DIR__ . '/includes/products-data.php';
 
-$id = (int)($_GET['id'] ?? 0);
-$qty = (int)($_GET['qty'] ?? 1);
-if ($qty < 1) $qty = 1;
+$pid = $_GET['id'] ?? '';
+$pid = trim($pid);
 
-$p = td_get_product($id);
-if (!$p) {
-  header('Location: /thongdong/customer/shop.php');
+if ($pid === '') {
+  header('Location: shop.php');
   exit;
 }
 
-if (!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
+// Load products from JSON
+$jsonPath = __DIR__ . '/../data/products.json';
+$products = [];
 
-$found = false;
-foreach ($_SESSION['cart'] as &$item) {
-  if ((int)$item['id'] === $id) {
-    $item['qty'] = (int)$item['qty'] + $qty;
-    $found = true;
+if (file_exists($jsonPath)) {
+  $products = json_decode(file_get_contents($jsonPath), true) ?? [];
+}
+
+// Find product
+$product = null;
+foreach ($products as $p) {
+  if ((string)($p['id'] ?? '') === (string)$pid) {
+    $product = $p;
     break;
   }
 }
-unset($item);
 
-if (!$found) {
-  $_SESSION['cart'][] = [
-    'id'    => $p['id'],
-    'name'  => $p['name'],
-    'price' => $p['price'],
-    'qty'   => $qty,
+if (!$product) {
+  header('Location: shop.php');
+  exit;
+}
+
+// Add to cart (session cart)
+if (!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
+
+$cart = &$_SESSION['cart'];
+if (!isset($cart[$pid])) {
+  $cart[$pid] = [
+    'id'    => $pid,
+    'name'  => $product['name'] ?? '',
+    'price' => (int)($product['price'] ?? 0),
+    'qty'   => 1,
+    'image' => $product['image'] ?? '',
   ];
+} else {
+  $cart[$pid]['qty'] += 1;
 }
 
 // quay lại trang trước nếu có, không thì về giỏ
-$back = $_SERVER['HTTP_REFERER'] ?? '/thongdong/customer/cart.php';
+$back = $_SERVER['HTTP_REFERER'] ?? 'cart.php';
 header('Location: ' . $back);
 exit;
